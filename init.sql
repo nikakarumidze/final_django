@@ -1,19 +1,14 @@
--- Create 'users' table
-CREATE TABLE IF NOT EXISTS users (
-    user_id INTEGER PRIMARY KEY,
-    username TEXT,
-    email TEXT,
-    password_hash TEXT,
-    balance REAL
+CREATE TABLE IF NOT EXISTS customer (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create transactions table
-CREATE TABLE IF NOT EXISTS transactions (
-    transaction_id INTEGER PRIMARY KEY,
-    sender_id INTEGER,
-    receiver_id INTEGER,
-    amount REAL,
-    date TEXT,
-    FOREIGN KEY(sender_id) REFERENCES users(user_id),
-    FOREIGN KEY(receiver_id) REFERENCES users(user_id)
+CREATE TABLE IF NOT EXISTS account (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    customer_id INTEGER NOT NULL,
+    balance REAL NOT NULL,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES customer(id)
 );
