@@ -1,7 +1,7 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from .views import register_user, user_exists
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('myapp.urls')),  # Include app urls
+    path('register/', register_user, name='register_user'),
+    path('user_exists/<str:username>/', user_exists, name='user_exists'),
 ]

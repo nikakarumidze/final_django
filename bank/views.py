@@ -1,3 +1,5 @@
+from django.urls import path, include
+from django.contrib import admin
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from .services import UserService
@@ -45,3 +47,12 @@ def custom_error_handler(request, exception=None):
     response.status_code = exception.status_code if hasattr(
         exception, 'status_code') else 500
     return response
+
+
+# myproject/urls.py
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', include('bank.urls')),  # Include app urls
+]
