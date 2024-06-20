@@ -17,8 +17,6 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(email, username, password, **extra_fields)
 
-# User model
-
 
 class User(AbstractBaseUser):
     username = models.CharField(max_length=150, unique=True)
@@ -34,8 +32,6 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.username
-
-# Transaction model
 
 
 class Transaction(models.Model):

@@ -47,12 +47,3 @@ def custom_error_handler(request, exception=None):
     response.status_code = exception.status_code if hasattr(
         exception, 'status_code') else 500
     return response
-
-
-# myproject/urls.py
-
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('bank.urls')),  # Include app urls
-]

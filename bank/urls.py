@@ -1,7 +1,11 @@
 from django.urls import path
-from .views import register_user, user_exists
+from .views import login_view, signup_view, transaction_view, custom_error_handler
 
 urlpatterns = [
-    path('register/', register_user, name='register_user'),
-    path('user_exists/<str:username>/', user_exists, name='user_exists'),
+    path('login/', login_view, name='login'),
+    path('signup/', signup_view, name='signup'),
+    path('transaction/', transaction_view, name='transaction'),
 ]
+
+# Custom error handler (Optional)
+handler500 = custom_error_handler
