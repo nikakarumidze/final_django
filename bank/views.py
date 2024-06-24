@@ -9,8 +9,12 @@ import json
 user_service = UserService()
 
 
+def home(request):
+    return JsonResponse({'message': 'Hello Home'}, status=200)
+
+
 @require_POST
-def login_view(request):
+def login(request):
     data = json.loads(request.body)
     result, status_code = user_service.authenticate_user(
         data.get("username"), data.get("password")
@@ -19,7 +23,7 @@ def login_view(request):
 
 
 @require_POST
-def signup_view(request):
+def signup(request):
     data = json.loads(request.body)
     result, status_code = user_service.register_user(
         data.get("username"), data.get("password"), data.get("email")
@@ -28,7 +32,7 @@ def signup_view(request):
 
 
 @require_POST
-def transaction_view(request):
+def transaction(request):
     data = json.loads(request.body)
     result, status_code = user_service.add_transaction(
         data.get("sender"),

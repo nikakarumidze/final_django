@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import login_view, signup_view, transaction_view, custom_error_handler
+from .views import home, login, signup, transaction, custom_error_handler
 
 urlpatterns = [
-    path('login/', login_view, name='login'),
-    path('signup/', signup_view, name='signup'),
-    path('transaction/', transaction_view, name='transaction'),
+    path('', home, name='home'),  # Root path for the app
+    path('login', login, name='login'),
+    path('signup', signup, name='signup'),
+    path('transaction', transaction, name='transaction'),
 ]
 
 # Custom error handler (Optional)
